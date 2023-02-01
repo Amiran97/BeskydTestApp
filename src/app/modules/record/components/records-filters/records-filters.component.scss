@@ -1,0 +1,16 @@
+@media screen and (max-width: 992px) {
+    .collapse {
+        display: none !important;
+    }
+    
+    .collapse.show {
+        display: flex !important;
+    }
+}
+
+label {
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+}

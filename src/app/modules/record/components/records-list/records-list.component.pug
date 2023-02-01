@@ -1,0 +1,9 @@
+app-record-add-edit
+.records.mt-2.rounded-top(*ngIf="records$ | async as records")
+    app-records-filters(*ngIf="records.length != 0")
+    .container.col-10
+        .d-flex.flex-wrap.justify-content-center
+            .post-item.justify-content-center.col-lg-5.col-md-10.m-3(*ngFor="let record of records | recordFilter :(nameFilter$ | async) :(statusFilter$ | async) :(roleFilter$ | async)")
+                app-record-item([record]="record")
+    .no-data.d-flex.justify-content-center.w-100.mt-5(*ngIf="records.length === 0")
+        span.px-2.py-2.border.rounded.bg-secondary.text-white No data found

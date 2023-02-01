@@ -1,0 +1,15 @@
+.filters.d-flex.bg-secondary.text-white.justify-content-center.flex-wrap.flex-lg-nowrap.rounded-top
+    i.bi.bi-caret-down.my-1.mx-3.m-lg-3.d-md-block.d-lg-none.cur-pointer((click)="hideControls()", *ngIf="!isHidden")
+    i.bi.bi-caret-up.my-1.mx-3.m-lg-3.d-md-block.d-lg-none.cur-pointer((click)="showControls()", *ngIf="isHidden")
+    form(*ngIf="filterForm", [formGroup]='filterForm')
+        .controls.d-flex.flex-wrap.flex-lg-nowrap.collapse([ngClass]="isHidden ? '' : 'show'")
+            label.my-1.mx-3.m-lg-3.flex-nowrap Filter by Name
+            input.form-control.my-1.mx-3.m-lg-2(placeholder="Enter name", type="text", formControlName="name", (keyup)="nameChange()")
+            label.my-1.mx-3.m-lg-3 Filter by Status
+            select.form-control.my-1.mx-3.m-lg-2(formControlName="status", (change)="statusChange()")
+                option([ngValue]="null") Select one...
+                option(*ngFor="let type of eStatus | keyvalue", [ngValue]="type.value") {{ type.value }}
+            label.my-1.mx-3.m-lg-3 Filter by Role
+            select.form-control.mt-1.mb-2.mx-3.m-lg-2(formControlName="role", (change)="roleChange()")
+                option([ngValue]="null") Select one...
+                option(*ngFor="let type of eRole | keyvalue", [ngValue]="type.value") {{ type.value }}
