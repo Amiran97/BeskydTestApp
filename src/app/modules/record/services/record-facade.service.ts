@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Record } from '../models/record.model';
 import { RecordDbService } from './record-db.service';
 import { RecordStorageService } from './record-storage.service';
@@ -13,9 +13,17 @@ export class RecordFacadeService {
         private recordStorage: RecordStorageService) {
             this.load();
         }
-    
+
       get record$() {
         return this.recordStorage.records$;
+      }
+
+      get editRecordId$() {
+        return this.recordStorage.editRecordId$;
+      }
+
+      setRecordId(id: string) {
+        this.recordStorage.setRecordId(id);
       }
 
       getById(id: string) : Observable<Record> {

@@ -1,0 +1,6 @@
+ngb-toast.toast-container.position-fixed.top-10.end-0.m-3.p-1(*ngFor="let toast of toasterService.toasts", [class]="toast.classname", [autohide]="true", [delay]="toast.delay || 3000", (hidden)="toasterService.remove(toast)")
+  ng-template([ngIf]="isTemplate(toast)", [ngIfElse]="text")
+    ng-template([ngTemplateOutlet]="toast.textOrTpl")
+  ng-template(#text) 
+    i.me-2.bi([class]="toast.icon")
+    span {{ toast.textOrTpl }}

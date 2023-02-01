@@ -6,7 +6,7 @@
     .modal-dialog(role="document")
         .modal-content
             .modal-header
-                h5.modal-title(id="addModaLabel") Add record
+                h5.modal-title(id="addModaLabel") {{ (isEdit) ? 'Edit record' : 'Add record' }}
                 button.btn.btn-secondary.mt-2.bi.bi-x-lg.rounded((click)="onCloseHandled()")
             form(*ngIf="recordForm", [formGroup]='recordForm', (ngSubmit)='onSubmit()')
                 .modal-body 
@@ -44,4 +44,4 @@
                         p.error-mes.text-danger(*ngIf="role?.errors?.['required']") *Role is required!
                 .modal-footer 
                     button.btn.btn-danger((click)="onCloseHandled()") Close 
-                    button.btn.btn-success(type="submit", [disabled]="recordForm?.invalid") Add
+                    button.btn.btn-success(type="submit", [disabled]="recordForm?.invalid") {{ (isEdit) ? 'Edit' : 'Add' }}

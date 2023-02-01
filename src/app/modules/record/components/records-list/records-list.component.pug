@@ -1,8 +1,8 @@
-app-record-add
+app-record-add-edit
 .records(*ngIf="records$ | async as records")
-    .container.col-9
+    .container.col-10
         .d-flex.flex-wrap.justify-content-center
-            .post-item.justify-content-center.col-3.m-3(*ngFor="let record of records")
+            .post-item.justify-content-center.col-lg-5.col-md-10.m-3(*ngFor="let record of records")
                 app-record-item([record]="record")
     .no-data.d-flex.justify-content-center.w-100(*ngIf="records.length === 0")
         span.px-2.py-2.border.rounded.bg-light No data found

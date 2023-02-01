@@ -9,13 +9,23 @@ import { Record } from '../models/record.model';
 })
 export class RecordStorageService {
   private records: BehaviorSubject<Record[]>;
-  
+  private editRecordId: BehaviorSubject<string>;
+
   constructor() {
     this.records = new BehaviorSubject(new Array<Record>());
+    this.editRecordId = new BehaviorSubject('');
+  }
+
+  get editRecordId$() {
+    return this.editRecordId.asObservable();
   }
 
   get records$() {
     return this.records.asObservable();
+  }
+
+  setRecordId(id: string) {
+    this.editRecordId.next(id);
   }
 
   set(records: Record[]) {

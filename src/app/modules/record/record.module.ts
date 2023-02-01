@@ -4,13 +4,13 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecordsListComponent } from './components/records-list/records-list.component';
 import { RecordRoutingModule } from './record-router.module';
-import { RecordAddComponent } from './components/record-add/record-add.component';
+import { RecordAddEditComponent } from './components/record-add-edit/record-add-edit.component';
 import { RecordItemComponent } from './components/record-item/record-item.component';
 
 @NgModule({
   declarations: [
     RecordsListComponent,
-    RecordAddComponent,
+    RecordAddEditComponent,
     RecordItemComponent
   ],
   imports: [
