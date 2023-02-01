@@ -1,0 +1,47 @@
+.create-record
+    button.btn.btn-success.bi.bi-plus-lg.rounded-circle(title="add record", (click)="openModal()")
+
+.overlay([ngStyle]="{'display':display}")
+.modal(#addModal id="addModal", tabindex="-1", role="dialog", [ngStyle]="{'display':display}")
+    .modal-dialog(role="document")
+        .modal-content
+            .modal-header
+                h5.modal-title(id="addModaLabel") Add record
+                button.btn.btn-secondary.mt-2.bi.bi-x-lg.rounded((click)="onCloseHandled()")
+            form(*ngIf="recordForm", [formGroup]='recordForm', (ngSubmit)='onSubmit()')
+                .modal-body 
+                    .name.form-group
+                        label.form-label(for="name") Name
+                        input.form-control(formControlName="name", type="text", placeholder="Enter name")
+                    .error-message(*ngIf='name?.touched')
+                        p.error-mes.text-danger(*ngIf="name?.errors?.['required']") *Name is required!
+                        p.error-mes.text-danger(*ngIf="name?.errors?.['maxlength']") *Name length can't be more than 32 symbols!
+                    .address.form-group
+                        label.form-label(for="address") Address
+                        input.form-control(formControlName="address", type="text", placeholder="Enter address")
+                    .error-message(*ngIf='address?.touched')
+                        p.error-mes.text-danger(*ngIf="address?.errors?.['required']") *Address is required!
+                        p.error-mes.text-danger(*ngIf="address?.errors?.['maxlength']") *Address length can't be more than 100 symbols!
+                    .amount.form-group
+                        label.form-label(for="amount") Amount
+                        input.form-control(formControlName="amount", type="number", placeholder="Choise amount")
+                    .error-message(*ngIf='amount?.touched')
+                        p.error-mes.text-danger(*ngIf="amount?.errors?.['required']") *Amount is required!
+                        p.error-mes.text-danger(*ngIf="amount?.errors?.['min']") *For amount minimum value is 1!
+                    .status.form-group
+                        label(for="status") Status
+                        select.form-control(formControlName="status")
+                            option([ngValue]="null") Select one...
+                            option(*ngFor="let type of eStatus | keyvalue", [ngValue]="type.value") {{ type.value }}
+                    .error-message(*ngIf='status?.touched')
+                        p.error-mes.text-danger(*ngIf="status?.errors?.['required']") *Status is required!
+                    .role.form-group
+                        label(for="role") Role
+                        select.form-control(formControlName="role")
+                            option([ngValue]="null") Select one...
+                            option(*ngFor="let type of eRole | keyvalue", [ngValue]="type.value") {{ type.value }}
+                    .error-message(*ngIf='role?.touched')
+                        p.error-mes.text-danger(*ngIf="role?.errors?.['required']") *Role is required!
+                .modal-footer 
+                    button.btn.btn-danger((click)="onCloseHandled()") Close 
+                    button.btn.btn-success(type="submit", [disabled]="recordForm?.invalid") Add

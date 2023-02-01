@@ -34,9 +34,9 @@ export class RecordFacadeService {
         );
       }
 
-      delete(id: string) : Observable<number> {
+      delete(id: string) : Observable<string> {
         return this.recordDb.delete(id).pipe(
-          tap(id => this.recordStorage.delete(id))
+          tap(res => this.recordStorage.delete(id))
         );
       }
 

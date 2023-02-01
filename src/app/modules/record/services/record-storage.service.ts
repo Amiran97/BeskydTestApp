@@ -23,7 +23,7 @@ export class RecordStorageService {
   }
 
   create(record: Record) {
-    this.records.next([record, ...this.records.getValue()]);
+    this.records.next([...this.records.getValue(), record]);
   }
 
   update(record: Record) {
@@ -32,7 +32,7 @@ export class RecordStorageService {
     records[index] = record;
   }
 
-  delete(id: number) {
+  delete(id: string) {
     _.remove(this.records.getValue(), record => record.id === id);
     this.records.next(this.records.getValue());
   }

@@ -1,0 +1,12 @@
+.card
+    .card-header.d-flex.justify-content-center.bg-secondary.text-white
+        h4 {{ record?.name }}
+    .card-body
+        span Address: {{ record?.address }}
+        br
+        span Amount: {{ record?.amount }}
+    .card-body.border-top.d-flex.justify-content-center
+        span Status: {{ record?.status }}, Role: {{ record?.role }}
+    .card-footer.d-flex.justify-content-end
+        button.btn.btn-warning.me-3.bi.bi-pencil-fill.text-white
+        button.btn.btn-danger.bi.bi-trash((click)="deleteRecord()")
