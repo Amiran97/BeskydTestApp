@@ -4,6 +4,7 @@ import { RouterModule } from "@angular/router";
 import { HeaderComponent } from "./components/header/header.component";
 import { ToastsComponent } from "./components/toaster/toaster.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { LoaderComponent } from "./components/loader/loader.component";
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
   ],
   declarations: [
     HeaderComponent,
-    ToastsComponent
+    ToastsComponent,
+    LoaderComponent
   ],
   exports: [
     HeaderComponent
