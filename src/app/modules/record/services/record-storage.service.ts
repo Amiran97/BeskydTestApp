@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
 import { BehaviorSubject } from 'rxjs';
 import { Record } from '../models/record.model';
 
@@ -37,13 +36,10 @@ export class RecordStorageService {
   }
 
   update(record: Record) {
-    let records = this.records.getValue();
-    let index = _.findLastIndex(records, item => item.id == record.id);
-    records[index] = record;
+    this.records.next(this.records.value.map(item => item.id === record.id ? record : item));
   }
 
   delete(id: string) {
-    _.remove(this.records.getValue(), record => record.id === id);
-    this.records.next(this.records.getValue());
+    this.records.next(this.records.getValue().filter(record => record.id !== id));
   }
 }

@@ -1,9 +1,7 @@
-.records {
-  margin-top: 70px;
+.no-data {
+  font-size: xx-large;
 }
 
-.no-data {
-  position: fixed;
-  top: 50%;
-  font-size: xx-large;
+.records {
+  min-height: calc(100vh - 74px);
 }
