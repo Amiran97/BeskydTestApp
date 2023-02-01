@@ -1,0 +1,3 @@
+.records(*ngIf="records$ | async as records")
+    .no-data.d-flex.justify-content-center.w-100(*ngIf='records.length === 0')
+        span.px-2.py-2.border.rounded.bg-light No data found
