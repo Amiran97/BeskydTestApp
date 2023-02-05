@@ -1,5 +1,5 @@
 app-record-add-edit
-.records(*ngIf="records$ | async as records")
+.records.mt-2.rounded-top(*ngIf="records$ | async as records")
     app-records-filters(*ngIf="records.length != 0")
     .container.col-10
         .d-flex.flex-wrap.justify-content-center
